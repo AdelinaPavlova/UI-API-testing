@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?><testsuites><testsuite name="pytest" errors="0" failures="2" skipped="0" tests="2" time="93.603" timestamp="2025-02-04T11:32:22.828474+03:00" hostname="MSI"><testcase classname="tests.test_playright" name="test_e2e_shopping[(6) Polo]" time="57.601"><failure message="assert False">api = &lt;module_7_playwright.api.server_api.AutomationApi object at 0x0000023328C2EE20&gt;
+user_info = {'address1': 'п. Октябрьское (Челяб.), пер. Балтийский, д. 37 стр. 8, 526598', 'address2': 'с. Краснотурьинск, ул. Лазо, д. 6, 031918', 'birth_date': 19, 'birth_month': '07', ...}
+create_user = {'address1': 'п. Октябрьское (Челяб.), пер. Балтийский, д. 37 стр. 8, 526598', 'address2': 'с. Краснотурьинск, ул. Лазо, д. 6, 031918', 'birth_date': 19, 'birth_month': '07', ...}
+web_auth = (&lt;Page url='https://www.automationexercise.com/brand_products/Polo'&gt;, [{'domain': 'www.automationexercise.com', 'expir... стр. 8, 526598', 'address2': 'с. Краснотурьинск, ул. Лазо, д. 6, 031918', 'birth_date': 19, 'birth_month': '07', ...})
+brand_name = '(6) Polo'
+
+    @allure.title("e2e тест создания заказа")
+    @allure.suite("Базовые тесты")
+    @pytest.mark.parametrize("brand_name", ["(6) Polo", "(5) H&amp;M"])
+    def test_e2e_shopping(api, user_info, create_user, web_auth, brand_name):
+        page, cookies, user_info = web_auth
+        steps = Steps(page)
+        steps.open_product_page()
+        steps.brand_choice(brand_name)
+        steps.add_to_cart()
+&gt;       assert False
+E       assert False
+
+test_playright.py:15: AssertionError</failure></testcase><testcase classname="tests.test_playright" name="test_e2e_shopping[(5) H&amp;M]" time="35.664"><failure message="playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.&#10;Call log:&#10;  - waiting for locator(&quot;body &gt; section &gt; div &gt; div.row &gt; div.col-sm-9.padding-right &gt; div &gt; div:nth-child(4) &gt; div &gt; div.single-products &gt; div.product-overlay &gt; div &gt; a&quot;)&#10;  -     - locator resolved to &lt;a data-product-id=&quot;6&quot; href=&quot;javascript:void();&quot; class=&quot;btn btn-default add-to-cart&quot;&gt;…&lt;/a&gt;&#10;  -   - attempting click action&#10;  -     2 × waiting for element to be visible, enabled and stable&#10;  -       - element is not stable&#10;  -     - retrying click action&#10;  -     - waiting 20ms&#10;  -     - waiting for element to be visible, enabled and stable&#10;  -     - element is not stable&#10;  -   2 × retrying click action&#10;  -       - waiting 100ms&#10;  -       - waiting for element to be visible, enabled and stable&#10;  -       - element is visible, enabled and stable&#10;  -       - scrolling into view if needed&#10;  -       - done scrolling&#10;  -       - &lt;h2 class=&quot;title text-center&quot;&gt;Brand - H&amp;M Products&lt;/h2&gt; intercepts pointer events&#10;  -   56 × retrying click action&#10;  -        - waiting 500ms&#10;  -        - waiting for element to be visible, enabled and stable&#10;  -        - element is visible, enabled and stable&#10;  -        - scrolling into view if needed&#10;  -        - done scrolling&#10;  -        - &lt;h2 class=&quot;title text-center&quot;&gt;Brand - H&amp;M Products&lt;/h2&gt; intercepts pointer events&#10;  -   - retrying click action&#10;  -     - waiting 500ms">api = &lt;module_7_playwright.api.server_api.AutomationApi object at 0x0000023328C2EE20&gt;
+user_info = {'address1': 'п. Октябрьское (Челяб.), пер. Балтийский, д. 37 стр. 8, 526598', 'address2': 'с. Краснотурьинск, ул. Лазо, д. 6, 031918', 'birth_date': 19, 'birth_month': '07', ...}
+create_user = {'address1': 'п. Октябрьское (Челяб.), пер. Балтийский, д. 37 стр. 8, 526598', 'address2': 'с. Краснотурьинск, ул. Лазо, д. 6, 031918', 'birth_date': 19, 'birth_month': '07', ...}
+web_auth = (&lt;Page url='https://www.automationexercise.com/brand_products/H&amp;M'&gt;, [{'domain': 'www.automationexercise.com', 'expire... стр. 8, 526598', 'address2': 'с. Краснотурьинск, ул. Лазо, д. 6, 031918', 'birth_date': 19, 'birth_month': '07', ...})
+brand_name = '(5) H&amp;M'
+
+    @allure.title("e2e тест создания заказа")
+    @allure.suite("Базовые тесты")
+    @pytest.mark.parametrize("brand_name", ["(6) Polo", "(5) H&amp;M"])
+    def test_e2e_shopping(api, user_info, create_user, web_auth, brand_name):
+        page, cookies, user_info = web_auth
+        steps = Steps(page)
+        steps.open_product_page()
+        steps.brand_choice(brand_name)
+&gt;       steps.add_to_cart()
+
+test_playright.py:14: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+..\steps\steps.py:21: in add_to_cart
+    self.product_page.add_products()
+..\page_object\ProductPage.py:29: in add_products
+    self.page.locator(
+..\..\..\..\miniconda3\envs\test_final\lib\site-packages\playwright\sync_api\_generated.py:15450: in click
+    self._sync(
+..\..\..\..\miniconda3\envs\test_final\lib\site-packages\playwright\_impl\_locator.py:156: in click
+    return await self._frame.click(self._selector, strict=True, **params)
+..\..\..\..\miniconda3\envs\test_final\lib\site-packages\playwright\_impl\_frame.py:488: in click
+    await self._channel.send("click", locals_to_params(locals()))
+..\..\..\..\miniconda3\envs\test_final\lib\site-packages\playwright\_impl\_connection.py:61: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = &lt;playwright._impl._connection.Connection object at 0x0000023329140A60&gt;
+cb = &lt;function Channel.send.&lt;locals&gt;.&lt;lambda&gt; at 0x00000233295231F0&gt;
+is_internal = False
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False
+    ) -&gt; Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(task, "__pw_stack__", inspect.stack())
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+&gt;           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.TimeoutError: Locator.click: Timeout 30000ms exceeded.
+E           Call log:
+E             - waiting for locator("body &gt; section &gt; div &gt; div.row &gt; div.col-sm-9.padding-right &gt; div &gt; div:nth-child(4) &gt; div &gt; div.single-products &gt; div.product-overlay &gt; div &gt; a")
+E             -     - locator resolved to &lt;a data-product-id="6" href="javascript:void();" class="btn btn-default add-to-cart"&gt;…&lt;/a&gt;
+E             -   - attempting click action
+E             -     2 × waiting for element to be visible, enabled and stable
+E             -       - element is not stable
+E             -     - retrying click action
+E             -     - waiting 20ms
+E             -     - waiting for element to be visible, enabled and stable
+E             -     - element is not stable
+E             -   2 × retrying click action
+E             -       - waiting 100ms
+E             -       - waiting for element to be visible, enabled and stable
+E             -       - element is visible, enabled and stable
+E             -       - scrolling into view if needed
+E             -       - done scrolling
+E             -       - &lt;h2 class="title text-center"&gt;Brand - H&amp;M Products&lt;/h2&gt; intercepts pointer events
+E             -   56 × retrying click action
+E             -        - waiting 500ms
+E             -        - waiting for element to be visible, enabled and stable
+E             -        - element is visible, enabled and stable
+E             -        - scrolling into view if needed
+E             -        - done scrolling
+E             -        - &lt;h2 class="title text-center"&gt;Brand - H&amp;M Products&lt;/h2&gt; intercepts pointer events
+E             -   - retrying click action
+E             -     - waiting 500ms
+
+..\..\..\..\miniconda3\envs\test_final\lib\site-packages\playwright\_impl\_connection.py:528: TimeoutError</failure></testcase></testsuite></testsuites>
