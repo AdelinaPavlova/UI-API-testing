@@ -1,5 +1,5 @@
 import pytest
-from module_7_playwright.steps.steps import Steps
+from steps.steps import Steps
 import allure
 
 
